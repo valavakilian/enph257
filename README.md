@@ -1,5 +1,5 @@
 # enph257
-Thermal simulation
+# Thermal simulation
 
 
 power resistor: 15ohm 100W
