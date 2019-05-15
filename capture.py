@@ -1,9 +1,9 @@
 # ls /dev/tty.*
 
 import serial
-import time
+from datetime import*
 
-output_file = "enph257pretest1.txt"
+output_file = "enph257pretest2.txt"
 port = "COM6"
 rate = 9600
 timeout = 1 # seconds
@@ -16,6 +16,6 @@ with open(output_file, 'w') as f:
             # print(len(line))
             if (len(line) != 0):
                 line = line.replace("\n","")
-                full_line = str(time.monotonic())+"  "+line+"\n"
+                full_line = str(datetime.now().time())+"  "+line+"\n"
                 print(full_line)
                 f.write(full_line)
