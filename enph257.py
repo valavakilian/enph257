@@ -3,13 +3,13 @@
 import serial
 
 output_file = "enph257pretest1.txt"
-port = "/dev/tty.usbserial-1450"
+port = "COM6"
 rate = 9600
 timeout = 1 # seconds
 
 with open(output_file, 'w') as f:
     with serial.Serial(port, rate, timeout=timeout) as ser:
-        while(i<5):
+        while(True):
             line = ser.readline().decode()
             # print(line)
             # print(len(line))
