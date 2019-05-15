@@ -1,28 +1,6 @@
-Sensor 0 Temperature: 16.89
-Sensor 1 Temperature: 17.87
-Sensor 2 Temperature: 17.87
-Sensor 3 Temperature: 16.89
-Sensor 0 Temperature: 16.89
-Sensor 1 Temperature: 17.38
-Sensor 2 Temperature: 17.87
-Sensor 3 Temperature: 16.41
-Sensor 0 Temperature: 16.41
-Sensor 1 Temperature: 17.38
-Sensor 2 Temperature: 17.87
-Sensor 3 Temperature: 16.89
-Sensor 0 Temperature: 16.89
-Sensor 1 Temperature: 17.87
-Sensor 2 Temperature: 17.87
-Sensor 3 Temperature: 16.89
-Sensor 0 Temperature: 16.89
-Sensor 1 Temperature: 17.38
-Sensor 2 Temperature: 17.87
-Sensor 3 Temperature: 16.89
-Sensor 0 Temperature: 16.89
-Sensor 1 Temperature: 17.38
-Sensor 2 Temperature: 17.87
-Sensor 3 Temperature: 16.41
-Sensor 0 Temperature: 16.89
-Sensor 1 Temperature: 17.38
-Sensor 2 Temperature: 17.87
-Sensor 3 Temperature: 16.89
+7893.531  17.87  18.36  18.36  17.87  18.36  -50.00
+7894.546  17.87  18.36  18.36  17.87  18.36  -50.00
+7895.562  17.87  18.36  18.36  17.87  18.36  -50.00
+7896.562  17.87  18.36  18.36  17.87  18.85  -50.00
+7897.578  17.87  18.36  18.36  17.87  18.36  -50.00
+7898.593  17.87  18.36  18.36  17.87  18.36  -50.00

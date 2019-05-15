@@ -1,6 +1,7 @@
 # ls /dev/tty.*
 
 import serial
+import time
 
 output_file = "enph257pretest1.txt"
 port = "COM6"
@@ -14,5 +15,7 @@ with open(output_file, 'w') as f:
             # print(line)
             # print(len(line))
             if (len(line) != 0):
-                print(line.replace("\n",""))
-                f.write(line)
+                line = line.replace("\n","")
+                full_line = str(time.monotonic())+"  "+line+"\n"
+                print(full_line)
+                f.write(full_line)

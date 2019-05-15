@@ -4,7 +4,7 @@ from scipy.optimize import curve_fit
 
 import glob
 
-filename = "enph257pretest1.txt"
+filename = "enph257pretest2.txt"
 
 # arrays for each sensor and one for time
 # each sensor shares the same timestamp
@@ -19,17 +19,18 @@ time = []
 with open(self.filename,'r') as f:
     for line in f:
         if(line[0] is not ';'):
-            line_split = line.split(' ')
+            line_split = line.split('  ')
             if (len(line_split) != 7):
                 continue
 
-            sensor0.append((float(line_split[0])))
-            sensor1.append((float(line_split[1])))
-            sensor2.append((float(line_split[2])))
-            sensor3.append((float(line_split[3])))
-            sensor4.append((float(line_split[4])))
-            powerresistor.append((float(line_split[5])))
-            time.append((float(line_split[6])))
+            time.append((float(line_split[0])))
+            sensor0.append((float(line_split[1])))
+            sensor1.append((float(line_split[2])))
+            sensor2.append((float(line_split[3])))
+            sensor3.append((float(line_split[4])))
+            sensor4.append((float(line_split[5])))
+            powerresistor.append((float(line_split[6])))
+
 
 # convert to numpy arrays for plotting
 time = np.array(time)
