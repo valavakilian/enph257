@@ -19,24 +19,27 @@ void loop() {
   temp3 = returnTemp(sensePin3);
   temp4 = returnTemp(sensePin4);
 
-  Serial.print("Sensor 0 Temperature: ");
-  Serial.print(temp0);
+  printOutputs(temp0, temp1, temp2, temp3, temp4);
   
-  Serial.print("Sensor 1 Temperature: ");
-  Serial.print(temp1);
-  
-  Serial.print("Sensor 2 Temperature: ");
-  Serial.print(temp2);
-  
-  Serial.print("Sensor 3 Temperature: ");
-  Serial.print(temp3);
-
-  Serial.print("Sensor 4 Temperature: ");
-  Serial.print(temp4);
-  delay(750);
+  delay(1000);
 }
 
+void printOutputs(double temp0,double temp1,double temp2,double temp3,double temp4) {
+  Serial.print(temp0);
+  Serial.print(" ");
+  Serial.print(temp1);
+  Serial.print(" ");
+  Serial.print(temp2);
+  Serial.print(" ");
+  Serial.print(temp3);
+  Serial.print(" ");
+  Serial.println(temp4);
+ 
+}
+
+
 double returnTemp(int address) {
+  double temp;
   sensorInput = analogRead(address);   // Read the analog sensor and store it
   temp = (double)sensorInput / 1024;   // Find percentage of input reading
   temp = temp * 5;                     // Multiply by 5V to get voltage
