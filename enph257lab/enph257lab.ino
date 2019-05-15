@@ -19,7 +19,6 @@ void loop() {
   temp3 = returnTemp(sensePin3);
   temp4 = returnTemp(sensePin4);
 
-<<<<<<< HEAD:enph257lab/enph257lab.ino
   printOutputs(temp0, temp1, temp2, temp3, temp4);
   
   delay(1000);
@@ -36,24 +35,6 @@ void printOutputs(double temp0,double temp1,double temp2,double temp3,double tem
   Serial.print(" ");
   Serial.println(temp4);
  
-=======
-  Serial.print("Sensor 0 Temperature: ");
-  Serial.print(temp0);
-
-  Serial.print("Sensor 1 Temperature: ");
-  Serial.print(temp1);
-
-  Serial.print("Sensor 2 Temperature: ");
-  Serial.print(temp2);
-
-  Serial.print("Sensor 3 Temperature: ");
-  Serial.print(temp3);
-
-  Serial.print("Sensor 4 Temperature: ");
-  Serial.print(temp4);
-
-  delay(750);
->>>>>>> e5299b12e1cbf79c8eeaff77ef664aecc536a881:enph257lab.ino
 }
 
 
