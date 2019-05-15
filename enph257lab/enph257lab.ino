@@ -4,9 +4,10 @@ int sensePin1 = A1;  // This is the Arduino Pin that will read the sensor output
 int sensePin2 = A2;  // This is the Arduino Pin that will read the sensor output
 int sensePin3 = A3;  // This is the Arduino Pin that will read the sensor output
 int sensePin4 = A4;  // This is the Arduino Pin that will read the sensor output
+int sensePin5 = A5;  // This is the Arduino Pin that will read the sensor output
 
 int sensorInput;     // The variable we will use to store the sensor input
-double temp0, temp1, temp2, temp3, temp4;     // The variable we will use to store temperature in degrees.
+double temp0, temp1, temp2, temp3, temp4, resistorVoltage;     // The variable we will use to store temperature in degrees.
 
 void setup() {
   Serial.begin(9600); // Start the Serial Port at 9600 baud (default)
@@ -18,23 +19,28 @@ void loop() {
   temp2 = returnTemp(sensePin2);
   temp3 = returnTemp(sensePin3);
   temp4 = returnTemp(sensePin4);
+  temp4 = returnTemp(sensePin4);
+  resistorVoltage = returnTemp(sensePin5);
 
-  printOutputs(temp0, temp1, temp2, temp3, temp4);
+
+
+  printOutputs(temp0, temp1, temp2, temp3, temp4, resistorVoltage);
   
   delay(1000);
 }
 
-void printOutputs(double temp0,double temp1,double temp2,double temp3,double temp4) {
+void printOutputs(double temp0,double temp1,double temp2,double temp3,double temp4, double resistorVoltage) {
   Serial.print(temp0);
-  Serial.print(" ");
+  Serial.print("  ");
   Serial.print(temp1);
-  Serial.print(" ");
+  Serial.print("  ");
   Serial.print(temp2);
-  Serial.print(" ");
+  Serial.print("  ");
   Serial.print(temp3);
-  Serial.print(" ");
-  Serial.println(temp4);
- 
+  Serial.print("  ");
+  Serial.print(temp4);
+  Serial.print("  ");
+  Serial.println(resistorVoltage);
 }
 
 
