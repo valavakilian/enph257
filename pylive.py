@@ -28,6 +28,36 @@ def live_plotter(x_vec,y1_data,line1,identifier='',pause_time=0.1):
     # return line so we can update it again in the next iteration
     return line1
 
+def multi_line_live_plotter(x_vec, y_data_vectors, lines = " ", pause_time = 0.1):
+    if lines[0] == []:
+        # this is the call to matplotlib that allows dynamic plotting
+        plt.ion()
+        fig = plt.figure(figsize=(13,6))
+        ax = fig.add_subplot(111)
+        for index in range(0, len(lines)):
+
+            if(lines[index] == []):
+                # create a variable for the line so we can later update it
+                lines[index], = ax.plot(x_vec,y_data_vectors[index],'-o',alpha=0.8)        
+        
+        #update plot label/title
+        plt.ylabel('Y Label')
+        #plt.title('Title: {}'.format(identifier))
+        plt.show()
+    
+    for index in range(0, len(lines)):
+        # after the figure, axis, and line are created, we only need to update the y-data
+        lines[index].set_ydata(y_data_vectors[index])
+        # adjust limits if new data goes beyond bounds
+        # if np.min(y_data_vectors[index])<=lines[index].axes.get_ylim()[0] or np.max(y_data_vectors[index])>=lines[index].axes.get_ylim()[1]:
+        #     plt.ylim([np.min(y_data_vectors[index])-np.std(y_data_vectors[index]),np.max(y_data_vectors[index])+np.std(y_data_vectors[index])])
+        # this pauses the data so the figure/axis can catch up - the amount of pause can be altered above
+    plt.pause(pause_time)
+    
+    # return line so we can update it again in the next iteration
+    return lines
+
+
 # the function below is for updating both x and y values (great for updating dates on the x-axis)
 def live_plotter_xy(x_vec,y1_data,line1,identifier='',pause_time=0.01):
     if line1==[]:
@@ -47,3 +77,4 @@ def live_plotter_xy(x_vec,y1_data,line1,identifier='',pause_time=0.01):
     plt.pause(pause_time)
     
     return line1
+
