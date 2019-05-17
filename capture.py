@@ -5,18 +5,18 @@ from datetime import*
 from pylive import live_plotter, multi_line_live_plotter
 import numpy as np
 
-output_file = "enph257pretest2.txt"
+output_file = "experiment_" + str(datetime.now().time()).replace(":","_") + ".txt"
 port = "COM6"
 rate = 9600
 timeout = 1 # seconds
 
-size = 100
+size = 1000
 x_vec = np.linspace(0,1,size+1)[0:-1]
-s0_vec = np.repeat(100, len(x_vec))
-s1_vec = np.repeat(100, len(x_vec))
-s2_vec = np.repeat(20, len(x_vec))
-s3_vec = np.repeat(20, len(x_vec))
-s4_vec = np.repeat(20, len(x_vec))
+s0_vec = np.repeat(75, len(x_vec))
+s1_vec = np.repeat(75, len(x_vec))
+s2_vec = np.repeat(75, len(x_vec))
+s3_vec = np.repeat(15, len(x_vec))
+s4_vec = np.repeat(15, len(x_vec))
 
 
 lines = []
@@ -30,6 +30,8 @@ lines.append(line1)
 lines.append(line2)
 lines.append(line3)
 lines.append(line4)
+
+first_time = True
 
 
 with open(output_file, 'w') as f:
@@ -72,7 +74,7 @@ with open(output_file, 'w') as f:
                 s_vec.append(s4_vec)
 
 
-
+                #x_vec.append()
                 lines = multi_line_live_plotter(x_vec, s_vec, lines)
                 # line0 = live_plotter(x_vec,s0_vec,line0)
                 # line1 = live_plotter(x_vec,s1_vec,line1)
