@@ -17,6 +17,8 @@ sensor4 = []
 powerresistor = []
 time = []
 
+initial_time = -1
+
 with open(filename,'r') as f:
     for line in f:
         if(line[0] is not ';'):
@@ -30,7 +32,10 @@ with open(filename,'r') as f:
             seconds = hours*60*60 + minutes*60 + float(time_split[2])
             # single_time = datetime.strptime(line_split[0], '%X')
 
-            time.append(float(seconds))
+            if initial_time == -1:
+                initial_time = seconds
+
+            time.append(float(seconds-initial_time))
             sensor0.append((float(line_split[1])))
             sensor1.append((float(line_split[2])))
             sensor2.append((float(line_split[3])))
@@ -48,17 +53,21 @@ sensor3 = np.array(sensor3)
 sensor4 = np.array(sensor4)
 powerresistor = np.array(powerresistor)
 
-print(time)
-print(sensor0)
-print("time", len(time))
-print("sensor0", len(sensor0))
-print("sensor1", len(sensor0))
+# print(time)
+# print(sensor0)
+# print("time", len(time))
+# print("sensor0", len(sensor0))
+# print("sensor1", len(sensor0))
 
-plt.plot(time, sensor0, "b.", markersize = 1)
-plt.plot(time, sensor1, "r.", markersize = 1)
-plt.plot(time, sensor2, "y.", markersize = 1)
-plt.plot(time, sensor3, "m.", markersize = 1)
-plt.plot(time, sensor4, "g.", markersize = 1)
+plt.plot(time, sensor0, "b.", markersize = 1, label = "10mm")
+plt.plot(time, sensor1, "r.", markersize = 1, label = "Sensor 1")
+plt.plot(time, sensor2, "y.", markersize = 1, label = "Sensor 2")
+plt.plot(time, sensor3, "m.", markersize = 1, label = "Sensor 3")
+plt.plot(time, sensor4, "g.", markersize = 1, label = "Sensor 4")
 
+plt.legend(loc = 'best')
+plt.xlabel("Time (seconds)")
+plt.ylabel("Temperature (Celsius)")
+plt.grid(True)
 
 plt.show()
