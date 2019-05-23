@@ -3,9 +3,8 @@ import numpy as np
 from scipy.optimize import curve_fit
 from datetime import datetime
 
-import glob
 
-filename = "experiment_14_23_57.756337.txt"
+filename = "experiment_16_00_45.539108.txt"
 
 # arrays for each sensor and one for time
 # each sensor shares the same timestamp
