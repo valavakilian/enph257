@@ -15,6 +15,7 @@ rodRadius = 0.01 #rod radius, m
 deltax = 0.005 #slice length, m
 deltat = 0.01 #time between iterations, s
 emissivity = 1 #emissivity, dimensionless
+tempStart = 298.15 #initial temperature, K
 
 stfb = 5.67 * (10 ** (-8))
 
@@ -22,11 +23,11 @@ stfb = 5.67 * (10 ** (-8))
 thermalCond = 205.0 #thermal conductivity of aluminum, W/(mK)
 density = 2700.0 #density, kg/m^3
 specificHeat = 902.0 #specific heat, J/(kgK)
-emissivity = 1.0 #emissivity, dimensionless
+emissivity = 0.1 #emissivity, dimensionless
 chtCoeff = 12.0 #convective heat transfer coefficient, W/(m^2K)
 
 # this code creates a numpy array with the initial temperature
-temp = np.repeat(tempAmbient, rodLength/deltax)
+temp = np.repeat(tempStart, rodLength/deltax)
 tempprev = temp
 
 # this function calculates the next iteration of temperature
@@ -79,6 +80,7 @@ t2 = t2 - ktoc
 t3 = t3 - ktoc
 t4 = t4 - ktoc
 t5 = t5 - ktoc
+
 mpl.plot(time, t1, 'b', time, t2, 'r', time, t3, 'y', time, t4, 'm', time, t5, 'g')
 mpl.grid(True)
 mpl.ylabel('Temperature, T (K)')
