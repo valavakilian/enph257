@@ -27,7 +27,6 @@ s2_vec = np.repeat(75, size)
 s3_vec = np.repeat(15, size)
 s4_vec = np.repeat(15, size)
 
-
 lines = []
 line0 = []
 line1 = []
@@ -96,5 +95,3 @@ with open(output_file, 'w') as f:
                 s2_vec = np.append(s2_vec[1:],0.0)
                 s3_vec = np.append(s3_vec[1:],0.0)
                 s4_vec = np.append(s4_vec[1:],0.0)
-                
-
