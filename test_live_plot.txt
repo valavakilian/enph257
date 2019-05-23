@@ -12,7 +12,7 @@ timeout = 1 # seconds
 
 colors = ['blue', 'red', 'yellow', 'purple', 'green']
 
-size = 60 * 60 * 1
+size = 10000
 # x_vec = np.linspace(0,1,size+1)[0:-1]
 # s0_vec = np.repeat(75, len(x_vec))
 # s1_vec = np.repeat(75, len(x_vec))
@@ -20,12 +20,12 @@ size = 60 * 60 * 1
 # s3_vec = np.repeat(15, len(x_vec))
 # s4_vec = np.repeat(15, len(x_vec))
 
-x_vec = np.linspace(0,size, size + 1)[0:-1]
-s0_vec = np.repeat(75, size)
-s1_vec = np.repeat(75, size)
-s2_vec = np.repeat(75, size)
-s3_vec = np.repeat(15, size)
-s4_vec = np.repeat(15, size)
+x_vec = np.repeat(0, 1)
+s0_vec = np.repeat(75, 1)
+s1_vec = np.repeat(75, 1)
+s2_vec = np.repeat(75, 1)
+s3_vec = np.repeat(15, 1)
+s4_vec = np.repeat(15, 1)
 
 
 lines = []
