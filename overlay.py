@@ -4,7 +4,7 @@ from scipy.optimize import curve_fit
 from datetime import datetime
 
 data_file = "experiment_14_23_57.756337.txt"
-simulation_file = "simulation_16_25_21.966117.txt"
+simulation_file = "simulation_11_28_07.476547.txt"
 
 # arrays for each sensor and one for time
 # each sensor shares the same timestamp
