@@ -9,12 +9,12 @@ output_file = "simulation_" + str(datetime.now().time()).replace(":","_") + ".tx
 
 # this is where constants are. Temperatures given are in Celsius, while length measurements are in meters.
 tempAmbient = 293.15 #ambient temperature, K
-power = 4.5 #thermal power, W
+power = 4 #thermal power, W
 rodLength = 0.3 #rod length, m
 rodRadius = 0.01 #rod radius, m
 deltax = 0.005 #slice length, m
 deltat = 0.01 #time between iterations, s
-emissivity = 1 #emissivity, dimensionless
+emissivity = 0 #emissivity, dimensionless
 tempStart = 298.15 #initial temperature, K
 
 stfb = 5.67 * (10 ** (-8))
