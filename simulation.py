@@ -13,9 +13,10 @@ power = 4.5 #thermal power, W
 rodLength = 0.3 #rod length, m
 rodRadius = 0.01 #rod radius, m
 deltax = 0.005 #slice length, m
-deltat = 0.01 #time between iterations, s
+deltat = 0.1 #time between iterations, s
 emissivity = 1 #emissivity, dimensionless
 tempStart = 298.15 #initial temperature, K
+halfP = 20 #on / off cycle, minutes
 
 stfb = 5.67 * (10 ** (-8))
 
@@ -58,7 +59,7 @@ t5 = [temp[int(.29/deltax)]]
 
 # iterates until the temperature distribution has reached themral equilibrium, as found by the L2 norm of dT.
 with open(output_file, 'w') as f:
-    while(runcounter < 3600):
+    while(runcounter < 7200):
         runcounter = runcounter + deltat
         tempprev = temp
         temp = nextTemp(deltat, temp, deltax, power)
@@ -69,7 +70,7 @@ with open(output_file, 'w') as f:
         t4.append(temp[int(.22/deltax)])
         t5.append(temp[int(.29/deltax)])
         f.write(str(runcounter) + "  " + str(temp[int(.01/deltax)]) + "  " + str(temp[int(.08/deltax)]) + "  " + str(temp[int(.15/deltax)]) + "  " + str(temp[int(.22/deltax)]) + "  " + str(temp[int(.29/deltax)]) + "\n")
-        if(int(runcounter/960) % 2 is 1):
+        if(int(runcounter/(halfP*60)) % 2 is 1):
             power = 0.0
         else:
             power = 4.5
