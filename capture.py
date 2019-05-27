@@ -6,7 +6,7 @@ from pylive import live_plotter, multi_line_live_plotter
 import numpy as np
 
 output_file = "experiment_" + str(datetime.now().time()).replace(":","_") + ".txt"
-port = "COM6"
+port = "COM5"
 rate = 9600
 timeout = 1 # seconds
 
