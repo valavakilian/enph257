@@ -5,14 +5,10 @@ from datetime import*
 import tqdm
 from tqdm import *
 from scipy.optimize import curve_fit
+from numpy import *
 
 
-def func( x, emissivity, chtCoeff, power_val, specificHeat):
-    time_data_length = 3600 / 3676 / 10
-    time, x, t2, t3, t4 ,t5 = simulate(emissivity, chtCoeff, power, specificHeat, len(ds0))
-    return x
-
-def simulate(emissivity, chtCoeff, power_val, specificHeat, time_data_length):
+def simulate(emissivity, chtCoeff, power_val, thermalCond, time_data_length):
     # This seeks to find the temperature over time of an aluminum rod subject to certain thermal conditions
 
     #output_file = "simulation_" + str(datetime.now().time()).replace(":","_") + ".txt"
@@ -76,7 +72,7 @@ def simulate(emissivity, chtCoeff, power_val, specificHeat, time_data_length):
     t4 = [temp[int(.22/deltax)]]
     t5 = [temp[int(.29/deltax)]]
 
-    #pbar = tqdm( total = 3600 / deltat) 
+    #pbar = tqdm( total = 3600 / deltat)
 
 
     # iterates until the temperature distribution has reached themral equilibrium, as found by the L2 norm of dT.
@@ -115,7 +111,7 @@ def simulate(emissivity, chtCoeff, power_val, specificHeat, time_data_length):
 
 
 #################################################################
-# From here we plot the data 
+# From here we plot the data
 
 
 data_file = "Horizontal_experiment_16_00_45.539108.txt"
@@ -182,31 +178,33 @@ ds4 = np.array(ds4)
 emissivity = 0.135
 chtCoeff = 8.75
 power = 6.05
-specificHeat = 902.0
 thermalCond = 205.0
 
-# time, t1, t2, t3, t4 ,t5 = simulate(emissivity, chtCoeff, power, specificHeat, len(ds0))
-
-# print(len(t1), len(ds0), len(time))
-
-# t1 = [t1[index] for index in range(0, 10 * len(ds0) - 1) if index % 10 == 0]
-# t2 = [t2[index] for index in range(0, 10 * len(ds0) - 1) if index % 10 == 0]
-# t3 = [t3[index] for index in range(0, 10 * len(ds0) - 1) if index % 10 == 0]
-# t4 = [t4[index] for index in range(0, 10 * len(ds0) - 1) if index % 10 == 0]
-# t5 = [t5[index] for index in range(0, 10 * len(ds0) - 1) if index % 10 == 0]
-
-# time = [time[index] for index in range(0, len(time) - 1) if index % 10 == 0]
-
-# print(len(t1), len(ds0), len(time))
 
 
-# mpl.plot(time, t1, 'b', time, t2, 'r', time, t3, 'y', time, t4, 'm', time, t5, 'g')
-# mpl.grid(True)
-# mpl.ylabel('Temperature, T (K)')
-# mpl.xlabel('time, t (s)')
-# mpl.show()
+def func( x, emissivity, chtCoeff, power_val, thermalCond):
+    time_data_length = 3600 / 3676 / 10
+    time, t0, t1, t2, t3 ,t4 = simulate(emissivity, chtCoeff, power, thermalCond, len(ds0))
+    t0 = t0[:-1:10]
+    t1 = t1[:-1:10]
+    t2 = t2[:-1:10]
+    t3 = t3[:-1:10]
+    t4 = t4[:-1:10]
 
-t1 = np.repeat(273 + 23.24, 3676)
-print(len(t1))
-print(len(ds0))
-popt, pcov = curve_fit(func, t1, ds0)
+    dist0 = np.linalg.norm(t0-ds0)
+    dist1 = np.linalg.norm(t1-ds1)
+    dist2 = np.linalg.norm(t2-ds2)
+    dist3 = np.linalg.norm(t3-ds3)
+    dist4 = np.linalg.norm(t4-ds4)
+
+    total_dist = dist0 + dist1 + dist2 + dist3 + dist4
+
+    print(total_dist)
+    print("e = " + str(emissivity), "power = " + str(power_val), "Convective Heat Transfer = " + str(chtCoeff), "Thermal conductivity: " + str(thermalCond))
+    return total_dist
+
+zero_norm_dist = np.repeat(0, 3676)
+current_norm_dist = np.repeat(100, 3676)
+print(len(zero_norm_dist))
+print(len(current_norm_dist))
+popt, pcov = curve_fit(func, current_norm_dist, zero_norm_dist, bounds = ([0.0, 7.0, 5.0, 190], [1.0, 13.0, 14.0, 220]))
